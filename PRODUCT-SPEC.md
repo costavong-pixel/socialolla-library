@@ -57,7 +57,7 @@ Every card follows the same base structure, even when the content type is differ
 | Title and goal | State what the card helps the buyer achieve | Yes |
 | Recipe | Clear steps to recreate it | Yes |
 | Assets needed | List the items, clips, tools, or copy needed | Yes |
-| Creator and credit price | Show who made it and what it costs to unlock | Yes |
+| Creator, base price and total credit cost | Show who made it, the creator's price, and the total unlock cost | Yes |
 | Notes / limits | State any rights, brand, or skill limitations | Yes |
 | Save / collect | Let a buyer keep it in a personal collection | Later |
 
@@ -169,9 +169,19 @@ Do not add many filters until enough cards exist to make them useful.
 - Purchased credits should have a stated expiry policy before public launch.
 - AI analysis costs more than a normal card unlock because it has a variable processing cost.
 
-### Pricing decisions still needed
+### Creator-controlled pricing
 
-This document does not set a price for a credit pack, a standard unlock, or an AI analysis. Those must be set after the actual AI/video-processing cost is measured. Pricing should leave room for Paddle fees, refunds, creator earnings, and the operating margin.
+Creators choose a **base price in credits** for each approved card. SocialOlla adds its marketplace fee on top, so the buyer sees the full credit total before unlocking.
+
+| Buyer-facing amount | Rule |
+|---|---|
+| Creator base price | Chosen by the creator in credits |
+| SocialOlla marketplace fee | Added on top of the creator base price |
+| Total credits to unlock | Creator base price + SocialOlla marketplace fee |
+
+Paddle's payment-processing fee applies when the customer buys a credit pack. It must be recovered in the credit-pack price and accounting; it is not charged a second time when the customer redeems prepaid credits for a card.
+
+The exact marketplace fee, credit-pack prices, and price limits remain to be decided. The buyer must always see the total credit cost before unlocking.
 
 ## 9. Creator marketplace and earnings
 
@@ -203,7 +213,9 @@ Approved cards appear in the library. Rejected cards stay private with a reason 
 
 Creators do not earn for views. They earn when a customer spends credits on their approved content.
 
-The correct public term is **creator revenue share**. The exact share and payout schedule are still to be decided. The calculation must clearly define what is deducted first, including payment fees, refunds, chargebacks, and applicable taxes.
+The creator sets a base price in credits. SocialOlla adds its marketplace fee on top for the buyer. The creator's earning is calculated from the creator base price under the approved revenue-share rule; refunds, chargebacks, and required taxes can reverse or reduce an eligible earning.
+
+Paddle fees arise when credits are purchased, not when a prepaid credit is redeemed. The ledger must preserve the link between the original credit purchase, the card unlock, the marketplace fee, and the creator earning.
 
 Every credit redemption should create an immutable ledger entry:
 
@@ -293,12 +305,12 @@ Initial signals worth measuring:
 
 ## 14. Decisions needed before development
 
-1. Is a creator allowed to choose a card's credit price, or does SocialOlla set fixed price tiers?
-2. What percentage of net revenue goes to the creator for an unlocked card?
+1. Marketplace fee: what percentage or fixed credit amount does SocialOlla add on top of a creator's base price?
+2. What percentage of the creator base price goes to the creator for an unlocked card?
 3. Are normal card unlocks permanent, or do credits buy temporary access?
 4. Is private AI analysis initially allowed only for a customer's own videos, or also permitted reference videos they have rights to analyze?
 5. Should the first release have both film technique and advertising cards, or launch with film technique cards first and add advertising next?
 
 ## 15. Immediate working decision
 
-Build the library around one shared card framework. Start by proving the paid unlock flow with real final-result previews and clear recipes. Do not make AI-generated images a required part of publishing a card.
+Build the library around one shared card framework. Creators choose each card's base price in credits; SocialOlla adds its marketplace fee on top. Start by proving the paid unlock flow with real final-result previews and clear recipes. Do not make AI-generated images a required part of publishing a card.
